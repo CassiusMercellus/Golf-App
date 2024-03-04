@@ -21,6 +21,7 @@ async function fetchData(apiUrl) {
 }
 
 // Example usage
+// ThanksGivingPoint API.
 const apiUrl = 'https://exquisite-pastelito-9d4dd1.netlify.app/golfapi/course11819.json';
 fetchData(apiUrl)
   .then((data) => {
@@ -32,7 +33,7 @@ fetchData(apiUrl)
       const holeInfo = data.holes[i];
       var holeNumber = holeInfo.hole;
 
-      // Get Average Of The Four Given Tee. Yard, Par, Handicap, Luigi
+      // Get Average Of The Four Yards.
       const tees = holeInfo.teeBoxes;
       var yardsArray = tees.map((tee) => tee.yards);
       var yardsAverage = getAverage(...yardsArray);
