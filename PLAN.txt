@@ -9,7 +9,7 @@ UI
 - There will be 18 total columns that needs to be condensed down to 9
 
 Functionality
-- load API data
++ load API data
 - Option of Selecting between multiple courses
     - For some reason it has it implied we will have to create most of our HTML 
     in JS which to me doesn't make much sense when we are simply displaying 
