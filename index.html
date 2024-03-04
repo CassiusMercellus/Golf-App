@@ -254,23 +254,30 @@
                 <div class="row5"></div>
             </div>
         </div>
-        <div class="options">
-            <div class="optionsHeader">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
-                    <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/>
-                </svg>
-            </div>
-            
-            <div class="createPlayer">
-                <input type="text" placeholder="Insert Player Name">
-                <button>Create Player</button>
-            </div>
-            <div class="playerList">
-                <ul class="playerTemplate">
-                    <button class="addPlayer">Add Player to Game</button>
-                    <p>Player Name</p>
-                    <button class="deletePlayer">Delete Player</button>
-                </ul>
+    </div>
+    <div class="options">
+        <div class="optionsHeader">
+            <h3>Players</h3>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16" id="headerHover">
+                <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/>
+            </svg>
+        </div>
+        
+        <div class="createPlayer">
+            <select name="courses" id="courses">
+                <option></option>
+                <option>Thanksgiving Point</option>
+                <option>Fox Hollow</option>
+                <option>Spanish Oaks</option>
+            </select>
+            <input type="text" placeholder="Insert Player Name" class="insertPlayerName">
+            <button class="createPlayerButton">Create Player</button>
+        </div>
+        <div class="playerList">
+            <div class="playerTemplate">
+                <button class="addPlayer">Add Player to Game</button>
+                <p>Player Name</p>
+                <button class="deletePlayer">Delete Player</button>
             </div>
         </div>
     </div>

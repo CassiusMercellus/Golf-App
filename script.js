@@ -25,9 +25,9 @@ const thanksGivingPointApiUrl = 'https://exquisite-pastelito-9d4dd1.netlify.app/
 const foxHollowApiUrl = 'https://exquisite-pastelito-9d4dd1.netlify.app/golfapi/course11819.json';
 const spanishOaksApiUrl = 'https://exquisite-pastelito-9d4dd1.netlify.app/golfapi/course19002.json';
 // Use Functions On Run Request.
-// fetchAndProcessData(thanksGivingPointApiUrl, 'ThanksGivingPoint');
-// fetchAndProcessData(foxHollowApiUrl, 'FoxHollow');
-// fetchAndProcessData(spanishOaksApiUrl, 'SpanishOaks');
+fetchAndProcessData(thanksGivingPointApiUrl, 'ThanksGiving Point');
+// fetchAndProcessData(foxHollowApiUrl, 'Fox Hollow');
+// fetchAndProcessData(spanishOaksApiUrl, 'Spanish Oaks');
 
 function fetchAndProcessData(apiUrl, courseName) {
   fetchData(apiUrl)
@@ -42,7 +42,7 @@ function fetchAndProcessData(apiUrl, courseName) {
 
 function processCourseData(data, courseName) {
   // console.log('Golf Course:', courseName);
-
+  currentCol = 1;
   for (let i = 0; i < data.holes.length; i++) {
     const holeInfo = data.holes[i];
     var holeNumber = holeInfo.hole;
@@ -55,6 +55,13 @@ function processCourseData(data, courseName) {
     const changeLocation = holeInfo.changeLocations[0];
     var par = changeLocation.par;
     var handicap = changeLocation.hcp;
+
+    // Show Data In Html.
+    if (currentCol === holeNumber) {
+      currentCol += 1;
+    } else {
+      console.error("The Data Cannot Be Shown Because The Data From The Api And The Html Could Not Be Matched.")
+    }
 
     // console.log(`Hole: ${holeNumber}`);
     // console.log('Yards:', yardsAverage);
