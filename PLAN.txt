@@ -30,6 +30,7 @@ Todo
     - Create player btn (taking in an input)
     - Delete Player btn
     - Change Course btn (updates API vars)
-- Frosted Background with golf field img in background
+    - Max players in a game/course = 5
++ Background with golf field img in background
 - Mobile Friendly/Responsive
-- Center data for desktop view
++ Center data for desktop view
