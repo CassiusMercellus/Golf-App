@@ -28,7 +28,9 @@ body {
     height: 50%;
     justify-content: center;
     margin: auto;
-    
+    z-index: 0;
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
 }
 header {
     display: flex;
@@ -50,9 +52,11 @@ header {
     height: 25px;
 }
 
-.table {
+.table1 {
     display: flex;
-    
+}
+.table2 {
+    display: none;
 }
 
 .col2, .col3, .col4, .col5, .col6, .col7, .col8, .col9, .col10 {
@@ -72,4 +76,27 @@ header {
     width: 140px;
     height: 65px;
     background-color: var(--background);
+}
+
+.options {
+    display: flex;
+    z-index: 2;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    padding: 10px;
+    margin: auto;
+    top: 0; right: 0; bottom: 0; left: 0;
+}
+.optionsHeader {
+    display:flex;
+    width: 100%;
+    background-color: rgb(0, 192, 32);
+    padding: 10px;
+    flex-direction: row-reverse;
+}
+.playerTemplate {
+    display:flex;
 }
