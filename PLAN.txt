@@ -21,3 +21,15 @@ Functionality
 
 How to
 - fetch function to get data we need (like 4 lines of code per row)
+
+
+Todo
+- Dropdown menu (or alternative UI animation)
+    - Add player btn (select from pre existing players)
+        - Save players to the specific course that is selected
+    - Create player btn (taking in an input)
+    - Delete Player btn
+    - Change Course btn (updates API vars)
+- Frosted Background with golf field img in background
+- Mobile Friendly/Responsive
+- Center data for desktop view
