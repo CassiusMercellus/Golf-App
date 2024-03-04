@@ -21,41 +21,51 @@ async function fetchData(apiUrl) {
 }
 
 // Example usage
-// ThanksGivingPoint API.
-const apiUrl = 'https://exquisite-pastelito-9d4dd1.netlify.app/golfapi/course11819.json';
-fetchData(apiUrl)
-  .then((data) => {
-    // Do something with the retrieved data
-    var name = data.name;
-    console.log('Golf Course:', name);
+const thanksGivingPointApiUrl = 'https://exquisite-pastelito-9d4dd1.netlify.app/golfapi/course11819.json';
+const foxHollowApiUrl = 'https://exquisite-pastelito-9d4dd1.netlify.app/golfapi/course11819.json';
+const spanishOaksApiUrl = 'https://exquisite-pastelito-9d4dd1.netlify.app/golfapi/course19002.json';
+// Use Functions On Run Request.
+// fetchAndProcessData(thanksGivingPointApiUrl, 'ThanksGivingPoint');
+// fetchAndProcessData(foxHollowApiUrl, 'FoxHollow');
+// fetchAndProcessData(spanishOaksApiUrl, 'SpanishOaks');
 
-    for (let i = 0; i < data.holes.length; i++) {
-      const holeInfo = data.holes[i];
-      var holeNumber = holeInfo.hole;
+function fetchAndProcessData(apiUrl, courseName) {
+  fetchData(apiUrl)
+    .then((data) => {
+      processCourseData(data, courseName);
+    })
+    .catch((error) => {
+      // Handle any errors that occurred during the fetch
+      console.error(`Fetch error for ${courseName}:`, error);
+    });
+}
 
-      // Get Average Of The Four Yards.
-      const tees = holeInfo.teeBoxes;
-      var yardsArray = tees.map((tee) => tee.yards);
-      var yardsAverage = getAverage(...yardsArray);
+function processCourseData(data, courseName) {
+  // console.log('Golf Course:', courseName);
 
-      const changeLocation = holeInfo.changeLocations[0];
-      var par = changeLocation.par;
-      var handicap = changeLocation.hcp;
+  for (let i = 0; i < data.holes.length; i++) {
+    const holeInfo = data.holes[i];
+    var holeNumber = holeInfo.hole;
 
-      console.log(`Hole: ${holeNumber}`);
-      console.log('Yards:', yardsAverage);
-      console.log('Par:', par);
-      console.log('Handicap:', handicap);
-      console.log('');
-    }
-  })
-  .catch((error) => {
-    // Handle any errors that occurred during the fetch
-    console.error('Fetch error:', error);
-  });
+    // Get Average Of The Four Yards.
+    const tees = holeInfo.teeBoxes;
+    var yardsArray = tees.map((tee) => tee.yards);
+    var yardsAverage = getAverage(...yardsArray);
+
+    const changeLocation = holeInfo.changeLocations[0];
+    var par = changeLocation.par;
+    var handicap = changeLocation.hcp;
+
+    // console.log(`Hole: ${holeNumber}`);
+    // console.log('Yards:', yardsAverage);
+    // console.log('Par:', par);
+    // console.log('Handicap:', handicap);
+    // console.log('');
+  }
+}
 
 function getAverage(...numbers) {
   const sum = numbers.reduce((acc, num) => acc + num, 0);
-  const average = sum / numbers.length;
+  const average = Math.floor(sum / numbers.length);
   return average;
 }
