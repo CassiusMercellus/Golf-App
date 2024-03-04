@@ -32,4 +32,5 @@ async function fetchData(apiUrl) {
     .catch((error) => {
       // Handle any errors that occurred during the fetch
       console.error('Fetch error:', error);
+      //
     });
