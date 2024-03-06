@@ -25,7 +25,7 @@ const thanksGivingPointApiUrl = 'https://exquisite-pastelito-9d4dd1.netlify.app/
 const foxHollowApiUrl = 'https://exquisite-pastelito-9d4dd1.netlify.app/golfapi/course11819.json';
 const spanishOaksApiUrl = 'https://exquisite-pastelito-9d4dd1.netlify.app/golfapi/course19002.json';
 // Use Functions On Run Request.
-fetchAndProcessData(thanksGivingPointApiUrl, 'ThanksGiving Point');
+// fetchAndProcessData(thanksGivingPointApiUrl, 'ThanksGiving Point');
 // fetchAndProcessData(foxHollowApiUrl, 'Fox Hollow');
 // fetchAndProcessData(spanishOaksApiUrl, 'Spanish Oaks');
 
@@ -57,7 +57,14 @@ function processCourseData(data, courseName) {
     var handicap = changeLocation.hcp;
 
     // Show Data In Html.
-    if (currentCol === holeNumber) {  
+    if (currentCol === holeNumber) {
+      const row2Elements = document.querySelectorAll('.row2');
+      const withoutH3 = Array.from(row2Elements).find((element) => !element.querySelector('h3'));
+      if (withoutH3) {
+        const newh3 = document.createElement('h3');
+        newh3.textContent = yardsAverage;
+        withoutH3.appendChild(newh3);
+      }
       currentCol += 1;
     } else {
       console.error("The Data Cannot Be Shown Because The Data From The Api And The Html Could Not Be Matched.")
