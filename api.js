@@ -1,3 +1,9 @@
+document.addEventListener('DOMContentLoaded', function () {
+  //fetchAndProcessData(thanksGivingPointApiUrl, 'ThanksGiving Point');
+  fetchAndProcessData(foxHollowApiUrl, 'Fox Hollow');
+});
+
+
 // Function to fetch data from an API
 async function fetchData(apiUrl) {
   try {
@@ -58,12 +64,31 @@ function processCourseData(data, courseName) {
 
     // Show Data In Html.
     if (currentCol === holeNumber) {
+      // YARDS
       const row2Elements = document.querySelectorAll('.row2');
-      const withoutH3 = Array.from(row2Elements).find((element) => !element.querySelector('h3'));
-      if (withoutH3) {
+      const withoutH3Yards = Array.from(row2Elements).find((element) => !element.querySelector('h3'));
+      if (withoutH3Yards) {
         const newh3 = document.createElement('h3');
         newh3.textContent = yardsAverage;
-        withoutH3.appendChild(newh3);
+        withoutH3Yards.appendChild(newh3);
+      }
+
+      // PAR
+      const row3Elements = document.querySelectorAll('.row3');
+      const withoutH3Par = Array.from(row3Elements).find((element) => !element.querySelector('h3'));
+      if (withoutH3Par) {
+        const newh3 = document.createElement('h3');
+        newh3.textContent = par;
+        withoutH3Par.appendChild(newh3);
+      }
+
+      // Handicap
+      const row4Elements = document.querySelectorAll('.row4');
+      const withoutH3Handicap = Array.from(row4Elements).find((element) => !element.querySelector('h3'));
+      if (withoutH3Handicap) {
+        const newh3 = document.createElement('h3');
+        newh3.textContent = handicap;
+        withoutH3Handicap.appendChild(newh3);
       }
       currentCol += 1;
     } else {
