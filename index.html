@@ -8,7 +8,8 @@
     <script src="https://kit.fontawesome.com/f0255b4da6.js" crossorigin="anonymous"></script>
     <link rel="icon" href="clipboard-list-solid.svg" type="image/x-icon">
     <link href="style.css" rel="stylesheet">
-    <script src="script.js" type="text/javascript"></script>
+    <script src="player.js" type="text/javascript" defer></script>
+    <script src="api.js" type="text/javascript" defer></script>
 </head>
 <body>
     <div class="content">
@@ -34,6 +35,12 @@
         </header>
         <div class="main">
             <h1 id="scorecardTitle">Lets play some golf!</h1>
+            <select name="courses" id="courses">
+                <option></option>
+                <option>Thanksgiving Point</option>
+                <option>Fox Hollow</option>
+                <option>Spanish Oaks</option>
+            </select>
         </div>
         <div class="table1">
             <div class="col1">
@@ -264,7 +271,7 @@
         </div>
         
         <div class="createPlayer">
-            <select name="courses" id="courses">
+            <select name="courses" id="playerCourses">
                 <option></option>
                 <option>Thanksgiving Point</option>
                 <option>Fox Hollow</option>

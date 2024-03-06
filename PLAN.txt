@@ -34,3 +34,4 @@ Todo
 + Background with golf field img in background
 - Mobile Friendly/Responsive
 + Center data for desktop view
+- Setup multiple script files (API, Player)

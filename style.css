@@ -15,8 +15,16 @@ body {
     color: black;
     background-color: var(--background);
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
+    align-items: center;
 }
+#courses {
+    height: 50px;
+    width: 250px;
+    border: solid black 2px;
+    border-radius: 5px;
+}
+
 #scorecardTitle {
     margin: 10px 0px;
 }
@@ -79,7 +87,7 @@ header {
 }
 
 .options {
-    display: flex;
+    display: none;
     z-index: 2;
     position: absolute;
     flex-direction: column;
@@ -107,7 +115,7 @@ header {
     padding: 10px;
     width: 100%;
 }
-#courses {
+#playerCourses {
     border: solid black 2px;
     border-radius: 5px;
 }
