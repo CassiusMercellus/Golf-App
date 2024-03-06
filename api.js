@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
   //fetchAndProcessData(thanksGivingPointApiUrl, 'ThanksGiving Point');
-  fetchAndProcessData(foxHollowApiUrl, 'Fox Hollow');
+  //fetchAndProcessData(foxHollowApiUrl, 'Fox Hollow');
+  //fetchAndProcessData(spanishOaksApiUrl, 'Spanish Oaks');
 });
 
 
@@ -28,7 +29,7 @@ async function fetchData(apiUrl) {
 
 // Example usage
 const thanksGivingPointApiUrl = 'https://exquisite-pastelito-9d4dd1.netlify.app/golfapi/course11819.json';
-const foxHollowApiUrl = 'https://exquisite-pastelito-9d4dd1.netlify.app/golfapi/course11819.json';
+const foxHollowApiUrl = 'https://exquisite-pastelito-9d4dd1.netlify.app/golfapi/course18300.json';
 const spanishOaksApiUrl = 'https://exquisite-pastelito-9d4dd1.netlify.app/golfapi/course19002.json';
 // Use Functions On Run Request.
 // fetchAndProcessData(thanksGivingPointApiUrl, 'ThanksGiving Point');
@@ -47,8 +48,12 @@ function fetchAndProcessData(apiUrl, courseName) {
 }
 
 function processCourseData(data, courseName) {
-  // console.log('Golf Course:', courseName);
+  console.log('Golf Course:', courseName);
+  console.log(data);
   currentCol = 1;
+  totalYards = 0;
+  totalPar = 0;
+  totalHandicap = 0;
   for (let i = 0; i < data.holes.length; i++) {
     const holeInfo = data.holes[i];
     var holeNumber = holeInfo.hole;
@@ -91,6 +96,23 @@ function processCourseData(data, courseName) {
         withoutH3Handicap.appendChild(newh3);
       }
       currentCol += 1;
+      totalYards += yardsAverage;
+      totalPar += par;
+      totalHandicap += handicap;
+
+      // Update Totals
+      const r2o = document.querySelectorAll('h3.r2o');
+      r2o.forEach((element) => {
+        element.textContent = totalYards;
+      });
+      const r3o = document.querySelectorAll('h3.r3o');
+      r3o.forEach((element) => {
+        element.textContent = totalPar;
+      });
+      const r4o = document.querySelectorAll('h3.r4o');
+      r4o.forEach((element) => {
+        element.textContent = totalHandicap;
+      });
     } else {
       console.error("The Data Cannot Be Shown Because The Data From The Api And The Html Could Not Be Matched.")
     }
@@ -101,6 +123,8 @@ function processCourseData(data, courseName) {
     // console.log('Handicap:', handicap);
     // console.log('');
   }
+
+
 }
 
 function getAverage(...numbers) {
