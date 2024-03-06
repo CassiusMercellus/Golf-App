@@ -1,25 +1,49 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // chev vars
+    const chevs = document.querySelectorAll(".bi-chevron-left, .bi-chevron-right");
+    let swap = 'table1';
 
-});
+    // option vars
 
-    const tableSwap = document.addEventListener('click', tableSwap)
+    const options = document.querySelectorAll(".bi-list");
+    let optionMenu = 'open';
 
-    function tableSwap() {
-        let swap = 'tabel1';
-        const table1 = document.getElementByClassName( 'table1' );
-        const table2 = document.getElementByClassName( 'table2' );
+    chevs.forEach(function(chev) {
+        chev.addEventListener("click", function () {
         
-        if (swap = 'table1') {
-            swap =  'tabel2';
-            table1.style.display = "none";
-            table2.style.display = "flex";
+            const table1 = document.getElementsByClassName('table1')[0]; // Accessing first element by index
+            const table2 = document.getElementsByClassName('table2')[0]; // Accessing first element by index
+        
+            if (swap === 'table1') {
+                swap = 'table2';
+                table1.style.display = "none";
+                table2.style.display = "flex";
+                
+            } else {
+                swap = 'table1';
+                table2.style.display = "none";
+                table1.style.display = "flex";
+            }
+        });
+    });
+
+
+    options.forEach(function(option) {
+        option.addEventListener("click", function () {
+        
+            const optionStatus = document.getElementsByClassName('options')[0]; // Access first element by index
             
-        } else {
-            swap =  'tabel1';
-            table2.style.display = "none";
-            table1.style.display = "flex";
-        }
-    }
+            if (optionMenu === 'open') {
+                optionMenu = 'closed';
+                optionStatus.style.display = "none";
+                
+            } else {
+                optionMenu = 'open';
+                optionStatus.style.display = "flex";
+            }
+        });
+    });
+});
 
 /* 
 Option Functions (Options menu)
@@ -36,9 +60,6 @@ Option Functions (Options menu)
  - Edit specific player button (removes and adds courses/changes the name)
 
 Header functions (main table)
-1. Toggle Table Function
-    - Simply swaps the display value for table 1 and 2 both chevrons 
-    function the same
 2. Options Menu function
  - Allows you to click on the options button and it will 
  bring up the options menu
