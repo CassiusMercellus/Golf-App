@@ -9,13 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
   courseSelect.addEventListener('change', function () {
     const selectedValue = this.value;
     
-    if (selectedValue === 'thanksgivingPoint') {
-      fetchAndProcessData(thanksGivingPointApiUrl, 'ThanksGiving Point');
-    } else if (selectedValue === 'foxHollow') {
-      fetchAndProcessData(foxHollowApiUrl, 'Fox Hollow');
-    } else if (selectedValue === 'spanishOaks') {
-      fetchAndProcessData(spanishOaksApiUrl, 'Spanish Oaks');
-    } else {
+    if  (selectedValue === "thanksgivingPoint" || selectedValue === "foxHollow" || selectedValue === "spanishOaks") {
       const row2ElementsRemove = document.querySelectorAll('.row2');
       const row3ElementsRemove = document.querySelectorAll('.row3');
       const row4ElementsRemove = document.querySelectorAll('.row4');
@@ -75,6 +69,76 @@ document.addEventListener('DOMContentLoaded', function () {
         addH3.classList.add('r4o');
         element.appendChild(addH3);
       });
+    }
+
+    if (selectedValue === 'thanksgivingPoint') {
+      fetchAndProcessData(thanksGivingPointApiUrl, 'ThanksGiving Point');
+    } else if (selectedValue === 'foxHollow') {
+      fetchAndProcessData(foxHollowApiUrl, 'Fox Hollow');
+    } else if (selectedValue === 'spanishOaks') {
+      fetchAndProcessData(spanishOaksApiUrl, 'Spanish Oaks');
+    } else if (selectedValue === '') {
+      const row2ElementsRemove = document.querySelectorAll('.row2');
+      const row3ElementsRemove = document.querySelectorAll('.row3');
+      const row4ElementsRemove = document.querySelectorAll('.row4');
+      row2ElementsRemove.forEach((element) => {
+        const removeH3 = element.querySelectorAll('h3');
+        removeH3.forEach((removeH3) => {
+          removeH3.remove();
+        });
+      });
+      row3ElementsRemove.forEach((element) => {
+        const removeH3 = element.querySelectorAll('h3');
+        removeH3.forEach((removeH3) => {
+          removeH3.remove();
+        });
+      });
+      row4ElementsRemove.forEach((element) => {
+        const removeH3 = element.querySelectorAll('h3');
+        removeH3.forEach((removeH3) => {
+          removeH3.remove();
+        });
+      });
+
+      const reAdd2 = document.querySelectorAll('.reAdd2');
+      reAdd2.forEach((element) => {
+        const addH3 = document.createElement('h3');
+        addH3.textContent = 'Yardage';
+        element.appendChild(addH3);
+      });
+      const reAdd3 = document.querySelectorAll('.reAdd3');
+      reAdd3.forEach((element) => {
+        const addH3 = document.createElement('h3');
+        addH3.textContent = 'Par';
+        element.appendChild(addH3);
+      });
+      const reAdd4 = document.querySelectorAll('.reAdd4');
+      reAdd4.forEach((element) => {
+        const addH3 = document.createElement('h3');
+        addH3.textContent = 'Handicap';
+        element.appendChild(addH3);
+      });
+
+      const reAdd2T = document.querySelectorAll('.reAdd2T');
+      reAdd2T.forEach((element) => {
+        const addH3 = document.createElement('h3');
+        addH3.classList.add('r2o');
+        element.appendChild(addH3);
+      });
+      const reAdd3T = document.querySelectorAll('.reAdd3T');
+      reAdd3T.forEach((element) => {
+        const addH3 = document.createElement('h3');
+        addH3.classList.add('r3o');
+        element.appendChild(addH3);
+      });
+      const reAdd4T = document.querySelectorAll('.reAdd4T');
+      reAdd4T.forEach((element) => {
+        const addH3 = document.createElement('h3');
+        addH3.classList.add('r4o');
+        element.appendChild(addH3);
+      });
+    } else {
+      alert("Error: Course Not Found.");
     }
   });
 });
@@ -148,7 +212,7 @@ function processCourseData(data, courseName) {
       const row2Elements = document.querySelectorAll('.row2');
       const withoutH3Yards = Array.from(row2Elements).find((element) => !element.querySelector('h3'));
       if (withoutH3Yards) {
-        const newh3 = document.createElement('h3');
+        var newh3 = document.createElement('h3');
         newh3.textContent = yardsAverage;
         withoutH3Yards.appendChild(newh3);
       }
@@ -157,7 +221,7 @@ function processCourseData(data, courseName) {
       const row3Elements = document.querySelectorAll('.row3');
       const withoutH3Par = Array.from(row3Elements).find((element) => !element.querySelector('h3'));
       if (withoutH3Par) {
-        const newh3 = document.createElement('h3');
+        var newh3 = document.createElement('h3');
         newh3.textContent = par;
         withoutH3Par.appendChild(newh3);
       }
@@ -166,7 +230,7 @@ function processCourseData(data, courseName) {
       const row4Elements = document.querySelectorAll('.row4');
       const withoutH3Handicap = Array.from(row4Elements).find((element) => !element.querySelector('h3'));
       if (withoutH3Handicap) {
-        const newh3 = document.createElement('h3');
+        var newh3 = document.createElement('h3');
         newh3.textContent = handicap;
         withoutH3Handicap.appendChild(newh3);
       }
