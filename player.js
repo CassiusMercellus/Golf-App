@@ -104,7 +104,25 @@ document.addEventListener('DOMContentLoaded', function() {
         if(index !== -1) {
             players.splice(index, 1);
             displayPlayers();
-        }
+        } 
+    }
+
+    const playerMainList = document.querySelector(".playerMainList");
+
+    function displayPlayers() {
+        playerList.innerHTML = '';
+        players.forEach((player, index) => {
+            const div = document.createElement('div');
+            div.innerHTML = `
+                <h3>${player.playerName}</h3>
+            `;
+            playerList.appendChild(div);
+
+            div.querySelector(".deletePlayer").addEventListener("click", function () {
+                deletePlayer(index);
+            });
+            
+        });
         
     }
     
