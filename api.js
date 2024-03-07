@@ -2,6 +2,81 @@ document.addEventListener('DOMContentLoaded', function () {
   //fetchAndProcessData(thanksGivingPointApiUrl, 'ThanksGiving Point');
   //fetchAndProcessData(foxHollowApiUrl, 'Fox Hollow');
   //fetchAndProcessData(spanishOaksApiUrl, 'Spanish Oaks');
+
+  const courses = document.querySelectorAll('.daCourse'); // Use class selector
+  const courseSelect = document.querySelector('#courses'); // Select the <select> element
+
+  courseSelect.addEventListener('change', function () {
+    const selectedValue = this.value;
+    
+    if (selectedValue === 'thanksgivingPoint') {
+      fetchAndProcessData(thanksGivingPointApiUrl, 'ThanksGiving Point');
+    } else if (selectedValue === 'foxHollow') {
+      fetchAndProcessData(foxHollowApiUrl, 'Fox Hollow');
+    } else if (selectedValue === 'spanishOaks') {
+      fetchAndProcessData(spanishOaksApiUrl, 'Spanish Oaks');
+    } else {
+      const row2ElementsRemove = document.querySelectorAll('.row2');
+      const row3ElementsRemove = document.querySelectorAll('.row3');
+      const row4ElementsRemove = document.querySelectorAll('.row4');
+      row2ElementsRemove.forEach((element) => {
+        const removeH3 = element.querySelectorAll('h3');
+        removeH3.forEach((removeH3) => {
+          removeH3.remove();
+        });
+      });
+      row3ElementsRemove.forEach((element) => {
+        const removeH3 = element.querySelectorAll('h3');
+        removeH3.forEach((removeH3) => {
+          removeH3.remove();
+        });
+      });
+      row4ElementsRemove.forEach((element) => {
+        const removeH3 = element.querySelectorAll('h3');
+        removeH3.forEach((removeH3) => {
+          removeH3.remove();
+        });
+      });
+
+      const reAdd2 = document.querySelectorAll('.reAdd2');
+      reAdd2.forEach((element) => {
+        const addH3 = document.createElement('h3');
+        addH3.textContent = 'Yardage';
+        element.appendChild(addH3);
+      });
+      const reAdd3 = document.querySelectorAll('.reAdd3');
+      reAdd3.forEach((element) => {
+        const addH3 = document.createElement('h3');
+        addH3.textContent = 'Par';
+        element.appendChild(addH3);
+      });
+      const reAdd4 = document.querySelectorAll('.reAdd4');
+      reAdd4.forEach((element) => {
+        const addH3 = document.createElement('h3');
+        addH3.textContent = 'Handicap';
+        element.appendChild(addH3);
+      });
+
+      const reAdd2T = document.querySelectorAll('.reAdd2T');
+      reAdd2T.forEach((element) => {
+        const addH3 = document.createElement('h3');
+        addH3.classList.add('r2o');
+        element.appendChild(addH3);
+      });
+      const reAdd3T = document.querySelectorAll('.reAdd3T');
+      reAdd3T.forEach((element) => {
+        const addH3 = document.createElement('h3');
+        addH3.classList.add('r3o');
+        element.appendChild(addH3);
+      });
+      const reAdd4T = document.querySelectorAll('.reAdd4T');
+      reAdd4T.forEach((element) => {
+        const addH3 = document.createElement('h3');
+        addH3.classList.add('r4o');
+        element.appendChild(addH3);
+      });
+    }
+  });
 });
 
 
@@ -63,7 +138,7 @@ function processCourseData(data, courseName) {
     var yardsArray = tees.map((tee) => tee.yards);
     var yardsAverage = getAverage(...yardsArray);
 
-    const changeLocation = holeInfo.changeLocations[0];
+    const changeLocation = holeInfo.teeBoxes[0];
     var par = changeLocation.par;
     var handicap = changeLocation.hcp;
 
