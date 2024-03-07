@@ -44,9 +44,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     // Option Functions
+    // Option Vars
+    let players = [];
     document.querySelector('.createPlayerButton').addEventListener('click', createPlayer);
-
-    
 
     function createPlayer() {
 
@@ -56,23 +56,62 @@ document.addEventListener('DOMContentLoaded', function() {
         const playerCoursesSelect = document.getElementById('playerCourses');
         const selectedOption = playerCoursesSelect.value;
 
-        if (playerNameValue !== '' && selectedOption !== '') {
-            console.log("Player name:", playerNameValue, "Course:", selectedOption);
+        if (players.length >= 5) {
+            console.log("to many players")
         } else {
-            console.log("nothin")
+            if (playerNameValue !== '' && selectedOption !== '') {
+
+                const newPlayer = {
+                    playerName: playerNameValue,
+                    selectedOption: selectedOption
+                };
+                players.push(newPlayer);
+                displayPlayers();
+                
+                playerName.value = '';
+                playerCoursesSelect.selectedIndex = '';
+
+            } else {
+                console.log("nothin")
+            }
         }
+
     }
+
+    const playerList = document.querySelector(".playerList");
+
+    function displayPlayers() {
+        playerList.innerHTML = '';
+        players.forEach((player, index) => {
+            const div = document.createElement('div');
+            div.classList.add('playerTemplate');
+            div.innerHTML = `
+                <h4 class="playerCourse">${player.selectedOption}</h4>
+                <p class="playerName">${player.playerName}</p>
+                <button class="deletePlayer">Delete Player</button>
+            `;
+            playerList.appendChild(div);
+
+            div.querySelector(".deletePlayer").addEventListener("click", function () {
+                deletePlayer(index);
+            });
+            
+        });
+        
+    }
+    
+    function deletePlayer(index) {
+        if(index !== -1) {
+            players.splice(index, 1);
+            displayPlayers();
+        }
+        
+    }
+    
+
 });
 
 /* 
-Option Functions (Options menu)
-1. Create Player Function
- - Creates a new player
- - Ensures the player has a name and is added to a course 
- otherwise create player button will not work
- - Displays the player when the courses its added to is present
-
-2. Delete player Function
- - Delete specific player button
-
+- Display on main card function
+    - displays players for a specified course on said course
 */
