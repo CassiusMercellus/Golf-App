@@ -187,8 +187,8 @@ function fetchAndProcessData(apiUrl, courseName) {
 }
 
 function processCourseData(data, courseName) {
-  console.log('Golf Course:', courseName);
-  console.log(data);
+  //console.log('Golf Course:', courseName);
+  //console.log(data);
   currentCol = 1;
   totalYards = 0;
   totalPar = 0;
