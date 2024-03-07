@@ -67,6 +67,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 };
                 players.push(newPlayer);
                 displayPlayers();
+                displayPlayersMain();
                 
                 playerName.value = '';
                 playerCoursesSelect.selectedIndex = '';
@@ -95,8 +96,9 @@ document.addEventListener('DOMContentLoaded', function() {
             div.querySelector(".deletePlayer").addEventListener("click", function () {
                 deletePlayer(index);
             });
-            
+            console.log(players)
         });
+        displayPlayersMain();
         
     }
     
@@ -104,32 +106,37 @@ document.addEventListener('DOMContentLoaded', function() {
         if(index !== -1) {
             players.splice(index, 1);
             displayPlayers();
+            displayPlayersMain();
         } 
     }
 
-    const playerMainList = document.querySelector(".playerMainList");
+    /* 
+    Display on main card function
+    - Align the lowest number in the players array or the first item WITH the
+    right location item 
+    - Take the ID from the HTML playerMainLists and align it with the player item
 
-    function displayPlayers() {
-        playerList.innerHTML = '';
+    - compare the two values of selected option main and each player item
+    */
+
+    const playerMainList = document.querySelector(".playerTable");
+
+    function displayPlayersMain() {
+        const playerCoursesSelectMain = document.getElementsByClassName('courses');
+        const selectedOptionMain = playerCoursesSelectMain.value;
+        
+        playerMainList.innerHTML = '';
         players.forEach((player, index) => {
             const div = document.createElement('div');
+            div.classList.add('playerMainList');
             div.innerHTML = `
                 <h3>${player.playerName}</h3>
             `;
-            playerList.appendChild(div);
+            playerMainList.appendChild(div);
 
-            div.querySelector(".deletePlayer").addEventListener("click", function () {
-                deletePlayer(index);
-            });
-            
+            console.log(players)
         });
-        
     }
     
 
 });
-
-/* 
-- Display on main card function
-    - displays players for a specified course on said course
-*/

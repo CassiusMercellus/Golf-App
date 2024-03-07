@@ -38,7 +38,7 @@ body {
     margin: auto;
     z-index: 0;
     position: absolute;
-    top: 0; right: 0; left: 0;
+    top: 0; right: 0; left: 0; bottom: 0;
 }
 header {
     display: flex;
@@ -66,6 +66,9 @@ header {
 .table2 {
     display: none;
 }
+.playerTable {
+    margin-top: 190px;
+}
 
 .col2, .col3, .col4, .col5, .col6, .col7, .col8, .col9, .col10 {
     width: 85px;
@@ -73,9 +76,16 @@ header {
     background-color: var(--background);
 }
 
-.row1, .row2, .row3, .row4, .row5, .playerMainList {
+.row1, .row2, .row3, .row4, .row5 {
     width: 100%;
     height: 100%;
+    border: solid 2px white;
+    background-color: var(--background);
+}
+
+.playerMainList {
+    width: 100%;
+    height: 70px;
     border: solid 2px white;
     background-color: var(--background);
 }
@@ -159,3 +169,4 @@ header {
     font-weight: 600;
     font-size: 18px;
 }
+
