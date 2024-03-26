@@ -3,8 +3,8 @@ document.addEventListener('DOMContentLoaded', function () {
   //fetchAndProcessData(foxHollowApiUrl, 'Fox Hollow');
   //fetchAndProcessData(spanishOaksApiUrl, 'Spanish Oaks');
 
-  const courses = document.querySelectorAll('.daCourse'); // Use class selector
-  const courseSelect = document.querySelector('#courses'); // Select the <select> element
+  const courses = document.querySelectorAll('.daCourse'); 
+  const courseSelect = document.querySelector('#courses');
 
   courseSelect.addEventListener('change', function () {
     const selectedValue = this.value;
@@ -144,29 +144,22 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-// Function to fetch data from an API
 async function fetchData(apiUrl) {
   try {
-    // Use the fetch function to make a GET request to the API
     const response = await fetch(apiUrl);
 
-    // Check if the request was successful (status code 200 OK)
     if (!response.ok) {
       throw new Error(`Error: ${response.statusText}`);
     }
 
-    // Parse the response body as JSON
     const data = await response.json();
 
-    // Return the data
     return data;
   } catch (error) {
     console.error('Error fetching data:', error.message);
-    // You can handle the error in an appropriate way here
   }
 }
 
-// Example usage
 const thanksGivingPointApiUrl = 'https://exquisite-pastelito-9d4dd1.netlify.app/golfapi/course11819.json';
 const foxHollowApiUrl = 'https://exquisite-pastelito-9d4dd1.netlify.app/golfapi/course18300.json';
 const spanishOaksApiUrl = 'https://exquisite-pastelito-9d4dd1.netlify.app/golfapi/course19002.json';
@@ -181,7 +174,6 @@ function fetchAndProcessData(apiUrl, courseName) {
       processCourseData(data, courseName);
     })
     .catch((error) => {
-      // Handle any errors that occurred during the fetch
       console.error(`Fetch error for ${courseName}:`, error);
     });
 }
